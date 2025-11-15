@@ -1,0 +1,210 @@
+  .corner-gif {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 120px;       /* adjust size */
+    height: auto;
+    z-index: 999999;    /* stay on top of everything */
+    pointer-events: none; /* so it won't block clicks */
+}
+.left-corner {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 9000;
+}
+
+.corner-gif {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 9000;
+}
+
+.roll {
+  position: fixed;
+  bottom: 0;
+  right: -200px;
+  width: 120px;
+  z-index: 9999;
+  pointer-events: none;
+
+  animation: rightToLeft 20.5s linear infinite;
+}
+
+@keyframes rightToLeft {
+  0% {
+    right: -200px;  /* start right side */
+  }
+
+  95% {
+    right: 100vw;
+    transform: translateX(-100%);
+  }
+
+  /* 95% → 100% = pause zone (0.5s) */
+  100% {
+    right: 100vw;
+    transform: translateX(-100%);
+  }
+}
+   #background-video {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    object-fit: cover; 
+ } 
+
+/* Layout */
+.main {
+    display: flex;
+    padding: 2em;
+    height: 90vh;
+    justify-content: center;
+    align-items: middle;
+}
+
+/* Make clock smaller & move to top-left */
+.clockbox {
+    position: fixed;
+    top: 20px;       /* distance from top */
+    left: 20px;      /* distance from left */
+    width: 180px;    /* <-- shrink size here */
+    height: 180px;
+    z-index: 9999;   /* keep above all other UI */
+}
+
+#clock {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Clock styles */
+.circle {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 9;
+    stroke-miterlimit: 10;
+}
+
+.mid-circle {
+    fill: #fff;
+}
+.hour-marks {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 9;
+    stroke-miterlimit: 10;
+}
+
+.hour-arm {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 17;
+    stroke-miterlimit: 10;
+}
+
+.minute-arm {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 11;
+    stroke-miterlimit: 10;
+}
+
+.second-arm {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+/* Transparent box ensuring arms center properly. */
+.sizing-box {
+    fill: none;
+}
+
+/* Make all arms rotate around the same center point. */
+/* Optional: Use transition for animation. */
+#hour,
+#minute,
+#second {
+    transform-origin: 300px 300px;
+    /* transition: transform .5s ease-in-out; */
+}
+/* 😎😎 shine card code */
+  .shine {
+    position: relative;
+    overflow: hidden;
+    transition:all ease-in-out 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    /* background-color: rgba(43, 43, 43, 0.8);  */
+ }
+ .shine:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: all ease-in-out 2s;
+ }
+ 
+  .shine::before {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: -85%;
+    position: absolute;
+    top: 0;
+    transform: skewX(-25deg);
+    width: 50%;
+    z-index: 2;
+    pointer-events: none;
+ }
+ 
+  .shine:hover::before, .shine:focus::before {
+    animation: shine 0.85s;
+ }
+ 
+  @keyframes shine {
+    100% {
+      left: 125%;
+   }
+ }
+ /* widget card css */
+  .widget {
+    background-color: transparent; 
+    /* make above backgroung full transparent
+     */
+
+
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+/* group the fixed widgets into a horizontal row with gaps; responsive wrap */
+.widget-group {
+  position: fixed;
+  bottom: 200px;
+  left: 60px;
+  display: flex;
+  gap: 20px; /* space between cards */
+  z-index: 9998;
+  flex-wrap: wrap; /* wrap to next line on small screens */
+}
+
+/* ensure individual widgets don't try to re-position themselves when inside the group */
+.widget-group .widget {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+}
